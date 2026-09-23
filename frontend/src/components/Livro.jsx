@@ -5,22 +5,37 @@ function Livro({ livro, onExcluir }) {
 
   return (
     <div className="livro">
-      <h3>{livro.titulo}</h3>
+      <div className="livro-topo">
+        <div className="livro-icone">📖</div>
 
-      <p>
-        <strong>Autor:</strong> {livro.autor}
-      </p>
+        <div className="livro-titulo">
+          <h3>{livro.titulo}</h3>
 
-      <p>
-        <strong>Ano:</strong> {livro.ano}
-      </p>
+          <span
+            className={
+              livro.disponivel ? "status disponivel" : "status indisponivel"
+            }
+          >
+            {livro.disponivel ? "Disponível" : "Indisponível"}
+          </span>
+        </div>
+      </div>
 
-      <p>
-        <strong>Status:</strong>{" "}
-        {livro.disponivel ? "Disponível" : "Indisponível"}
-      </p>
+      <div className="livro-info">
+        <p>
+          <strong>Autor</strong>
+          <span>{livro.autor}</span>
+        </p>
 
-      <button onClick={() => onExcluir(livro.id)}>Excluir</button>
+        <p>
+          <strong>Ano</strong>
+          <span>{livro.ano}</span>
+        </p>
+      </div>
+
+      <button className="botao-excluir" onClick={() => onExcluir(livro.id)}>
+        Excluir livro
+      </button>
     </div>
   );
 }

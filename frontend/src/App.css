@@ -4,9 +4,9 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
-  color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  color: #1e293b;
 }
 
 button,
@@ -19,88 +19,661 @@ button {
   cursor: pointer;
 }
 
+/* CONTAINER PRINCIPAL */
+
 .app {
-  width: 90%;
-  max-width: 1000px;
+  width: 92%;
+  max-width: 1100px;
   margin: 40px auto;
 }
 
+/* CABEÇALHO */
+
 header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 header h1 {
-  margin-bottom: 10px;
+  margin: 0;
+  font-size: 42px;
+  color: #1e3a8a;
+  letter-spacing: -1px;
 }
 
+header p {
+  margin-top: 10px;
+  color: #64748b;
+  font-size: 17px;
+}
+
+/* FORMULÁRIO E ÁREA DE LIVROS */
+
 form,
-section,
-.livro {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+section {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 28px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e2e8f0;
 }
 
 form h2,
 section h2 {
   margin-top: 0;
+  color: #1e293b;
 }
 
+/* FORMULÁRIO */
+
 form div {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
   font-weight: bold;
+  color: #334155;
 }
 
 input[type="text"],
 input[type="number"],
 select {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background-color: #f8fafc;
+  color: #1e293b;
+  outline: none;
+  transition: 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #2563eb;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 input[type="checkbox"] {
   margin-right: 8px;
+  accent-color: #2563eb;
 }
+
+/* BOTÕES */
 
 button {
   border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  background-color: #333;
+  padding: 11px 18px;
+  border-radius: 9px;
+  background-color: #2563eb;
   color: white;
+  font-weight: bold;
+  transition: 0.2s ease;
 }
 
 button:hover {
-  background-color: #555;
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.25);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* ÁREA DE FILTROS */
+
+section > p {
+  color: #64748b;
+}
+
+section > p strong {
+  color: #2563eb;
+  font-size: 20px;
+}
+
+section input[type="text"] {
+  width: 65%;
+  margin-right: 10px;
+}
+
+section select {
+  width: 30%;
+}
+
+/* CARDS DOS LIVROS */
+
+.livro {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.07);
+  transition: 0.25s ease;
+}
+
+.livro:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+  border-color: #bfdbfe;
 }
 
 .livro h3 {
   margin-top: 0;
+  margin-bottom: 15px;
+  color: #1e3a8a;
+  font-size: 22px;
 }
 
 .livro p {
-  margin: 8px 0;
+  margin: 9px 0;
+  color: #475569;
 }
 
-@media (max-width: 600px) {
+.livro strong {
+  color: #334155;
+}
+
+/* BOTÃO EXCLUIR */
+
+.livro button {
+  margin-top: 12px;
+  background-color: #dc2626;
+}
+
+.livro button:hover {
+  background-color: #b91c1c;
+  box-shadow: 0 5px 12px rgba(220, 38, 38, 0.25);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
   .app {
     width: 94%;
-    margin: 20px auto;
+    margin: 25px auto;
+  }
+
+  header h1 {
+    font-size: 32px;
+  }
+
+  form,
+  section {
+    padding: 20px;
+  }
+
+  section input[type="text"],
+  section select {
+    width: 100%;
+    margin: 0 0 12px 0;
+  }
+}
+
+@media (max-width: 450px) {
+  header h1 {
+    font-size: 28px;
+  }
+
+  header p {
+    font-size: 15px;
   }
 
   form,
   section,
   .livro {
-    padding: 15px;
+    padding: 17px;
+  }
+}
+
+/* =========================================
+   MELHORIAS DOS CARDS
+========================================= */
+
+.livro {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Linha azul no topo do card */
+
+.livro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+}
+
+/* Parte superior do livro */
+
+.livro-topo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.livro-icone {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eff6ff;
+  border-radius: 12px;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.livro-titulo {
+  flex: 1;
+}
+
+.livro-titulo h3 {
+  margin: 0 0 7px 0;
+}
+
+/* STATUS */
+
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.status.disponivel {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status.indisponivel {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* INFORMAÇÕES */
+
+.livro-info {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.livro-info p {
+  margin: 0;
+  padding: 12px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.livro-info strong {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+}
+
+.livro-info span {
+  color: #1e293b;
+  font-weight: 500;
+}
+
+/* BOTÃO EXCLUIR */
+
+.botao-excluir {
+  width: 100%;
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.botao-excluir:hover {
+  background-color: #dc2626;
+  color: white;
+  border-color: #dc2626;
+}
+
+/* =========================================
+   MELHORIA DO CONTADOR
+========================================= */
+
+section > p {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #eff6ff;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+section > p strong {
+  font-size: 18px;
+}
+
+/* =========================================
+   MELHORIA DOS CAMPOS DE PESQUISA
+========================================= */
+
+section input[type="text"] {
+  transition: all 0.2s ease;
+}
+
+section input[type="text"]::placeholder {
+  color: #94a3b8;
+}
+
+/* =========================================
+   RESPONSIVIDADE DOS CARDS
+========================================= */
+
+@media (max-width: 600px) {
+  .livro-info {
+    grid-template-columns: 1fr;
+  }
+
+  .livro-topo {
+    align-items: flex-start;
+  }
+
+  .livro-icone {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+}
+
+/* =========================================
+   CABEÇALHO MODERNO
+========================================= */
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 35px 25px;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+}
+
+.cabecalho-icone {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  font-size: 38px;
+}
+
+.cabecalho h1 {
+  margin: 0;
+  color: white;
+  font-size: 38px;
+}
+
+.cabecalho p {
+  margin: 7px 0 0;
+  color: #dbeafe;
+  font-size: 16px;
+}
+
+/* =========================================
+   TÍTULOS DAS SEÇÕES
+========================================= */
+
+.titulo-secao {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 25px;
+}
+
+.titulo-icone {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eff6ff;
+  border-radius: 11px;
+  font-size: 21px;
+}
+
+.titulo-secao h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.titulo-secao p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* =========================================
+   CONTAINER DO FORMULÁRIO
+========================================= */
+
+.formulario-container {
+  background-color: white;
+  padding: 28px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+}
+
+.formulario-container form {
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+}
+
+/* =========================================
+   CAMPOS DO FORMULÁRIO
+========================================= */
+
+.formulario-container form > h2 {
+  display: none;
+}
+
+.formulario-container form > div {
+  margin-bottom: 17px;
+}
+
+.formulario-container label {
+  font-size: 14px;
+}
+
+.formulario-container button[type="submit"] {
+  width: 100%;
+  margin-top: 5px;
+  padding: 13px;
+  font-size: 15px;
+}
+
+/* =========================================
+   ÁREA DA BIBLIOTECA
+========================================= */
+
+.filtros-container {
+  padding: 28px;
+}
+
+.biblioteca-resumo {
+  margin-bottom: 22px;
+}
+
+.contador {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background-color: #eff6ff;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+}
+
+.contador-icone {
+  font-size: 24px;
+}
+
+.contador div {
+  display: flex;
+  flex-direction: column;
+}
+
+.contador span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.contador strong {
+  font-size: 22px;
+  color: #1d4ed8;
+}
+
+/* =========================================
+   PESQUISA E ORDENAÇÃO
+========================================= */
+
+.filtros {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 15px;
+}
+
+.campo-pesquisa,
+.campo-ordenacao {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo-pesquisa label,
+.campo-ordenacao label {
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #475569;
+}
+
+.campo-pesquisa input,
+.campo-ordenacao select {
+  width: 100%;
+}
+
+/* =========================================
+   MENSAGENS
+========================================= */
+
+.mensagem-erro {
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #b91c1c;
+  font-weight: 500;
+}
+
+.mensagem-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 40px;
+  background-color: white;
+  border-radius: 15px;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.mensagem-vazia {
+  text-align: center;
+  padding: 55px 20px;
+  background-color: white;
+  border-radius: 15px;
+  border: 1px dashed #cbd5e1;
+  color: #64748b;
+}
+
+.mensagem-vazia span {
+  display: block;
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.mensagem-vazia h3 {
+  margin: 0;
+  color: #334155;
+}
+
+.mensagem-vazia p {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 700px) {
+  .cabecalho {
+    padding: 25px 18px;
+    text-align: left;
+  }
+
+  .cabecalho h1 {
+    font-size: 28px;
+  }
+
+  .cabecalho-icone {
+    width: 55px;
+    height: 55px;
+    font-size: 30px;
+  }
+
+  .filtros {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .cabecalho {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cabecalho p {
+    font-size: 14px;
+  }
+
+  .formulario-container,
+  .filtros-container {
+    padding: 20px;
+  }
+
+  .titulo-secao {
+    align-items: flex-start;
   }
 }

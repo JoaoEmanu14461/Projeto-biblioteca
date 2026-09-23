@@ -111,47 +111,96 @@ function App() {
 
   return (
     <div className="app">
-      <header>
-        <h1>Biblioteca Virtual</h1>
+      <header className="cabecalho">
+        <div className="cabecalho-icone">📚</div>
 
-        <p>Gerencie seus livros de forma simples e rápida.</p>
+        <div>
+          <h1>Biblioteca Virtual</h1>
+          <p>Organize seus livros de forma simples, rápida e prática.</p>
+        </div>
       </header>
 
-      <FormularioLivro onCadastrar={cadastrarLivro} />
+      <main>
+        <div className="formulario-container">
+          <div className="titulo-secao">
+            <span className="titulo-icone">➕</span>
 
-      <section>
-        <h2>Livros cadastrados</h2>
+            <div>
+              <h2>Cadastrar livro</h2>
+              <p>Adicione um novo livro à sua biblioteca.</p>
+            </div>
+          </div>
 
-        <p>
-          Total de livros: <strong>{livros.length}</strong>
-        </p>
+          <FormularioLivro onCadastrar={cadastrarLivro} />
+        </div>
 
-        <input
-          type="text"
-          placeholder="Pesquisar livro..."
-          value={pesquisa}
-          onChange={(event) => setPesquisa(event.target.value)}
-        />
+        <section className="filtros-container">
+          <div className="titulo-secao">
+            <span className="titulo-icone">🔎</span>
 
-        <select
-          value={ordem}
-          onChange={(event) => setOrdem(event.target.value)}
-        >
-          <option value="titulo">Ordenar por título</option>
-          <option value="autor">Ordenar por autor</option>
-          <option value="ano">Ordenar por ano</option>
-        </select>
-      </section>
+            <div>
+              <h2>Minha biblioteca</h2>
+              <p>Pesquise e organize seus livros cadastrados.</p>
+            </div>
+          </div>
 
-      {erro && <p>{erro}</p>}
+          <div className="biblioteca-resumo">
+            <div className="contador">
+              <span className="contador-icone">📚</span>
 
-      {carregando ? (
-        <p>Carregando...</p>
-      ) : livrosFiltrados.length === 0 ? (
-        <p>Nenhum item cadastrado.</p>
-      ) : (
-        <ListaLivros livros={livrosFiltrados} onExcluir={excluirLivro} />
-      )}
+              <div>
+                <span>Total de livros</span>
+                <strong>{livros.length}</strong>
+              </div>
+            </div>
+          </div>
+
+          <div className="filtros">
+            <div className="campo-pesquisa">
+              <label>Pesquisar livro</label>
+
+              <input
+                type="text"
+                placeholder="Digite o título do livro..."
+                value={pesquisa}
+                onChange={(event) => setPesquisa(event.target.value)}
+              />
+            </div>
+
+            <div className="campo-ordenacao">
+              <label>Ordenar por</label>
+
+              <select
+                value={ordem}
+                onChange={(event) => setOrdem(event.target.value)}
+              >
+                <option value="titulo">Título</option>
+
+                <option value="autor">Autor</option>
+
+                <option value="ano">Ano</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        {erro && <div className="mensagem-erro">{erro}</div>}
+
+        {carregando ? (
+          <div className="mensagem-status">
+            <span>⏳</span>
+            Carregando...
+          </div>
+        ) : livrosFiltrados.length === 0 ? (
+          <div className="mensagem-vazia">
+            <span>📚</span>
+            <h3>Nenhum item cadastrado.</h3>
+            <p>Cadastre seu primeiro livro para começar.</p>
+          </div>
+        ) : (
+          <ListaLivros livros={livrosFiltrados} onExcluir={excluirLivro} />
+        )}
+      </main>
     </div>
   );
 }
