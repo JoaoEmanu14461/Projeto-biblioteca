@@ -22,3 +22,22 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Django
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+
+# React
+frontend/node_modules/
+frontend/dist/
+
+# Ambiente
+.env
+
+# VS Code
+.vscode/
